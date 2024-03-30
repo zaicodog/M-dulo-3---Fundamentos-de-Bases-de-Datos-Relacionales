@@ -46,12 +46,6 @@ INSERT INTO Transaccion (transaction_id, sender_user_id, receiver_user_id, impor
 (2, 2, 3, 200.00, '2024-03-30'),
 (3, 3, 1, 150.00, '2024-03-31');
 
-SELECT Usuario.nombre, Transaccion.importe, Moneda.currency_name
-FROM Transaccion
-JOIN Usuario ON Transaccion.sender_user_id = Usuario.user_id
-JOIN Moneda ON Transaccion.currency_id = Moneda.currency_id
-ORDER BY Usuario.nombre;
-
 -- Consulta para obtener el nombre de la moneda elegida por un usuario específico
 SELECT currency_name FROM Moneda WHERE currency_id IN (SELECT currency_id FROM Usuario WHERE user_id = 1);
 
